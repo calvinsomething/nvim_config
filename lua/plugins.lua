@@ -3,7 +3,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	install = { colorscheme = { "aloe" } },
-	checker = { 
+	checker = {
 		enabled = false,
 		frequency = 86400, -- check every 24 hours
 	},
@@ -24,9 +24,9 @@ require("lazy").setup({
 			tag = "0.1.8",
 			dependencies = { "nvim-lua/plenary.nvim" },
 			keys = {
-				{"<leader>ff", function() require("telescope.builtin").find_files() end},
-				{"<leader>fF", function() require("telescope.builtin").find_files() end},
-				{"<leader>fg", function() require("telescope.builtin").live_grep() end},
+				{ "<leader>ff", function() require("telescope.builtin").find_files() end },
+				{ "<leader>fF", function() require("telescope.builtin").find_files() end },
+				{ "<leader>fg", function() require("telescope.builtin").live_grep() end },
 			},
 		},
 		{
@@ -44,6 +44,12 @@ require("lazy").setup({
 				{ "mason-org/mason.nvim", opts = {} },
 				"neovim/nvim-lspconfig",
 			},
+		},
+		{
+			"sbdchd/neoformat",
+			config = function()
+				vim.g.neoformat_try_node_exe = 1
+			end,
 		},
 		{
 			"saghen/blink.cmp",

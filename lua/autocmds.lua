@@ -28,7 +28,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	group = vim.api.nvim_create_augroup("on_save_js", { clear = true }),
 	pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.json" },
 	callback = function()
-		vim.cmd("!prettier -w <amatch>")
+		vim.cmd.Neoformat()
 	end,
 })
 
