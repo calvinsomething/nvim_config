@@ -20,6 +20,33 @@ require("lazy").setup({
 			end,
 		},
 		{
+			"lewis6991/gitsigns.nvim",
+			opts = {
+				on_attach = function()
+					local gitsigns = require("gitsigns")
+
+					vim.keymap.set("n", "]c", function()
+						if vim.wo.diff then
+							vim.cmd.normal({ "]c", bang = true })
+						else
+							gitsigns.nav_hunk("next")
+						end
+					end)
+
+					vim.keymap.set("n", "[c", function()
+						if vim.wo.diff then
+							vim.cmd.normal({ "]c", bang = true })
+						else
+							gitsigns.nav_hunk("prev")
+						end
+					end)
+
+					vim.keymap.set("n", "<leader>hs", gitsigns.stage_hunk)
+					vim.keymap.set("n", "<leader>hr", gitsigns.reset_hunk)
+				end,
+			},
+		},
+		{
 			"nvim-telescope/telescope.nvim",
 			tag = "0.1.8",
 			dependencies = { "nvim-lua/plenary.nvim" },

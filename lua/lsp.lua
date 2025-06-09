@@ -35,6 +35,10 @@ vim.lsp.config("ts_ls", {
 
 vim.lsp.config("*", {
 	root_markers = { ".git" },
+	on_attach = function()
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition)
+		vim.keymap.set("n", "<f2>", vim.lsp.buf.rename)
+	end,
 })
 
-vim.lsp.enable({"luals", "gopls", "clangd", "ts_ls"})
+vim.lsp.enable({ "luals", "gopls", "clangd", "ts_ls" })
