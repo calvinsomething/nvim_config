@@ -126,33 +126,7 @@ require("lazy").setup({
 				"leoluz/nvim-dap-go",
 			},
 			config = function()
-				local dap, dapui = require("dap"), require("dapui")
-
-				require("dap-go").setup({
-					dap_configurations = {
-						{
-							-- Must be "go" or it will be ignored by the plugin
-							type = "go",
-							name = "Attach remote",
-							mode = "remote",
-							request = "attach",
-						},
-					},
-				})
-
-				dapui.setup()
-
-				dap.listeners.before.attach.dapui_config = dapui.open
-				dap.listeners.before.launch.dapui_config = dapui.open
-				dap.listeners.before.event_terminated.dapui_config = dapui.close
-				dap.listeners.before.event_exited.dapui_config = dapui.close
-
-				vim.keymap.set("n", "<f5>", dap.continue)
-				vim.keymap.set("n", "<f9>", dap.step_over)
-				vim.keymap.set("n", "<f10>", dap.step_into)
-				vim.keymap.set("n", "<f11>", dap.step_out)
-				vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint)
-				vim.keymap.set("n", "<leader>dt", dapui.toggle)
+				require("dap-config")
 			end,
 		},
 	}
